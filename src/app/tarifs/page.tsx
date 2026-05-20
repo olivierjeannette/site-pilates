@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
-import Pricing from "@/components/sections/Pricing";
-import LeadMagnet from "@/components/sections/LeadMagnet";
+import PricingDetailed from "@/components/sections/PricingDetailed";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
@@ -14,13 +13,12 @@ export default function TarifsPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Studio Pilates by Skàli"
+        eyebrow="Studio Pilates · Laval"
         title="Nos"
         highlight="tarifs"
-        subtitle="Des formules adaptées à tous les budgets et toutes les fréquences. Commencez par une séance gratuite."
+        subtitle="1ère séance gratuite. Paiement via l'app Peppy."
       />
-      <Pricing />
-      <LeadMagnet />
+      <PricingDetailed />
       <CTA />
     </>
   );
