@@ -26,23 +26,29 @@ export default function Hero() {
       .from(ctasRef.current, { y: 30, opacity: 0, duration: 0.7 }, "-=0.5")
       .from(scrollIndicatorRef.current, { opacity: 0, duration: 0.6 }, "-=0.3");
 
-    gsap.to(shapesRef.current?.querySelector(".blob-1"), {
-      y: 20,
-      x: -10,
-      duration: 4,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
-    gsap.to(shapesRef.current?.querySelector(".blob-2"), {
-      y: -15,
-      x: 15,
-      duration: 5,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: 1,
-    });
+    const blob1 = shapesRef.current?.querySelector(".blob-1");
+    const blob2 = shapesRef.current?.querySelector(".blob-2");
+    if (blob1) {
+      gsap.to(blob1, {
+        y: 20,
+        x: -10,
+        duration: 4,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+    }
+    if (blob2) {
+      gsap.to(blob2, {
+        y: -15,
+        x: 15,
+        duration: 5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 1,
+      });
+    }
   }, []);
 
   return (
