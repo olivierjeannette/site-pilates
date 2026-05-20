@@ -29,7 +29,7 @@ export default function Testimonials() {
     >
       <div className="container-app">
         <div className="max-w-2xl mx-auto text-center">
-          <div className="reveal flex justify-center gap-0.5 mb-6">
+          <div className="reveal flex justify-center gap-1 mb-10">
             {Array.from({ length: 5 }).map((_, i) => (
               <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill="var(--color-cta)">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -38,14 +38,14 @@ export default function Testimonials() {
           </div>
 
           <blockquote
-            className="reveal text-pretty mb-8"
+            className="reveal text-pretty mb-10"
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(1.25rem, 4vw, 1.875rem)",
               fontWeight: 400,
               fontStyle: "italic",
               color: "var(--color-ink-900)",
-              lineHeight: 1.4,
+              lineHeight: 1.5,
               letterSpacing: "-0.01em",
             }}
           >

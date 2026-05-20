@@ -12,30 +12,32 @@ type Tab = "engagement" | "sans-engagement" | "carnets";
 const pricingData = {
   engagement: {
     label: "Avec engagement",
-    note: "Frais d'inscription 20€ (une seule fois)",
+    note: "Engagement 12 mois · Frais d'inscription 20€ (une seule fois)",
     plans: [
-      { name: "Basic", sessions: "4 séances / mois", price: "34,99", unit: "€/mois" },
-      { name: "Standard", sessions: "8 séances / mois", price: "42,99", unit: "€/mois", popular: true },
-      { name: "Premium", sessions: "6 séances / mois", price: "56,99", unit: "€/mois" },
-      { name: "Ultimate", sessions: "8 séances / mois", price: "62,99", unit: "€/mois" },
+      { name: "Pilates Basic", sessions: "Abonnement mensuel", price: "34,99", unit: "€/mois" },
+      { name: "Pilates Premium", sessions: "Abonnement mensuel", price: "42,99", unit: "€/mois", popular: true },
+      { name: "Pilates Ultimate", sessions: "Abonnement mensuel", price: "56,99", unit: "€/mois" },
     ],
   },
   "sans-engagement": {
     label: "Sans engagement",
-    note: "Résiliable à tout moment",
+    note: "Résiliable à tout moment · Pass Découverte réservé aux nouveaux",
     plans: [
-      { name: "Basic", sessions: "4 séances / mois", price: "54,99", unit: "€/mois" },
-      { name: "Premium", sessions: "6 séances / mois", price: "42,99", unit: "€/mois", popular: true },
+      { name: "Pass Découverte", sessions: "1 semaine illimitée · paiement unique", price: "19", unit: "€", popular: true },
+      { name: "Pilates Basic", sessions: "Abonnement mensuel", price: "54,99", unit: "€/mois" },
+      { name: "Pilates Premium", sessions: "Abonnement mensuel", price: "62,99", unit: "€/mois" },
+      { name: "Pilates Ultimate", sessions: "Abonnement mensuel", price: "76,99", unit: "€/mois" },
     ],
   },
   carnets: {
     label: "Carnets",
     note: "Carnets valables 12 mois",
     plans: [
-      { name: "À l'unité", sessions: "1 séance", price: "15", unit: "€" },
-      { name: "Carnet 5", sessions: "5 séances", price: "70", unit: "€" },
-      { name: "Carnet 10", sessions: "10 séances", price: "135", unit: "€", popular: true },
-      { name: "Carnet 20", sessions: "20 séances", price: "255", unit: "€" },
+      { name: "1 séance / Drop-in", sessions: "1 entrée · validité 6 mois", price: "15", unit: "€" },
+      { name: "Carnet 5 séances", sessions: "5 entrées", price: "70", unit: "€" },
+      { name: "Carnet 10 séances", sessions: "10 entrées", price: "135", unit: "€", popular: true },
+      { name: "Carnet 10 séances · Ado", sessions: "10 entrées · tarif adolescent", price: "67,50", unit: "€" },
+      { name: "Carnet 20 séances", sessions: "20 entrées", price: "255", unit: "€" },
     ],
   },
 };
@@ -65,9 +67,9 @@ export default function PricingDetailed() {
     >
       <div className="container-app">
         {/* Tabs */}
-        <div className="reveal flex justify-center mb-8">
+        <div className="reveal flex justify-center mb-12">
           <div
-            className="inline-flex p-1 rounded-full"
+            className="inline-flex p-1.5 rounded-full"
             style={{
               backgroundColor: "var(--color-cream-100)",
               border: "1px solid var(--color-ink-200)",
@@ -77,7 +79,7 @@ export default function PricingDetailed() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className="px-3 sm:px-5 py-2 rounded-full text-[12px] sm:text-sm font-medium transition-all whitespace-nowrap"
+                className="px-4 sm:px-6 py-2.5 rounded-full text-[12px] sm:text-sm font-medium transition-all whitespace-nowrap"
                 style={{
                   backgroundColor: activeTab === tab ? "var(--color-ink-900)" : "transparent",
                   color: activeTab === tab ? "white" : "var(--color-ink-500)",
@@ -90,7 +92,7 @@ export default function PricingDetailed() {
         </div>
 
         {current.note && (
-          <p className="reveal text-center text-xs mb-6" style={{ color: "var(--color-ink-500)" }}>
+          <p className="reveal text-center text-xs mb-12 tracking-wide" style={{ color: "var(--color-ink-500)" }}>
             ⓘ {current.note}
           </p>
         )}
@@ -100,7 +102,7 @@ export default function PricingDetailed() {
             {current.plans.map((plan, i) => (
               <li
                 key={plan.name}
-                className="py-5 flex items-baseline justify-between gap-4"
+                className="py-8 flex items-baseline justify-between gap-6"
                 style={{
                   borderTop: "1px solid var(--color-ink-200)",
                   borderBottom: i === current.plans.length - 1 ? "1px solid var(--color-ink-200)" : "none",
@@ -127,7 +129,7 @@ export default function PricingDetailed() {
                       </span>
                     )}
                   </p>
-                  <p className="text-xs mt-0.5" style={{ color: "var(--color-ink-500)" }}>
+                  <p className="text-xs mt-1.5 leading-relaxed" style={{ color: "var(--color-ink-500)" }}>
                     {plan.sessions}
                   </p>
                 </div>
@@ -149,7 +151,7 @@ export default function PricingDetailed() {
             ))}
           </ul>
 
-          <div className="reveal mt-8 text-center">
+          <div className="reveal mt-16 text-center">
             <a
               href="https://app.peppy.cool"
               target="_blank"

@@ -35,8 +35,8 @@ export default function Courses() {
       style={{ backgroundColor: "var(--color-bg)" }}
     >
       <div className="container-app">
-        <div className="max-w-2xl mx-auto text-center mb-12 md:mb-14">
-          <div className="reveal eyebrow justify-center mb-6" style={{ display: "inline-flex" }}>
+        <div className="max-w-2xl mx-auto text-center mb-16 md:mb-20">
+          <div className="reveal eyebrow justify-center mb-8" style={{ display: "inline-flex" }}>
             Nos cours
           </div>
           <h2
@@ -47,7 +47,7 @@ export default function Courses() {
             }}
           >
             Une formule{" "}
-            <span style={{ color: "var(--color-sage-500)", fontStyle: "italic", fontWeight: 400 }}>
+            <span style={{ color: "var(--color-terra-500)", fontStyle: "italic", fontWeight: 400 }}>
               pour chacun
             </span>
           </h2>
@@ -58,7 +58,7 @@ export default function Courses() {
             {courses.map((c, i) => (
               <li
                 key={c.title}
-                className="reveal py-6 flex items-center justify-between gap-6"
+                className="reveal py-8 flex items-center justify-between gap-8"
                 style={{
                   borderTop: "1px solid var(--color-ink-200)",
                   borderBottom: i === courses.length - 1 ? "1px solid var(--color-ink-200)" : "none",
@@ -66,7 +66,7 @@ export default function Courses() {
               >
                 <div className="flex-1">
                   <h3
-                    className="mb-1"
+                    className="mb-2"
                     style={{
                       fontFamily: "var(--font-display)",
                       fontSize: "clamp(1.25rem, 3vw, 1.5rem)",
@@ -77,13 +77,13 @@ export default function Courses() {
                   >
                     {c.title}
                   </h3>
-                  <p className="text-sm" style={{ color: "var(--color-ink-500)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--color-ink-500)" }}>
                     {c.desc}
                   </p>
                 </div>
                 <span
-                  className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: "var(--color-sage-100)", color: "var(--color-sage-600)" }}
+                  className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: "var(--color-cream-200)", color: "var(--color-terra-600)" }}
                 >
                   <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -93,7 +93,7 @@ export default function Courses() {
             ))}
           </ul>
 
-          <div className="reveal text-center mt-10">
+          <div className="reveal text-center mt-16">
             <a
               href="https://app.peppy.cool"
               target="_blank"

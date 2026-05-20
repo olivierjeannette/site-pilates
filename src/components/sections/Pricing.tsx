@@ -35,8 +35,8 @@ export default function Pricing() {
       style={{ backgroundColor: "var(--color-cream-100)" }}
     >
       <div className="container-app">
-        <div className="max-w-2xl mx-auto text-center mb-10 md:mb-14">
-          <div className="reveal eyebrow justify-center mb-6" style={{ display: "inline-flex" }}>
+        <div className="max-w-2xl mx-auto text-center mb-16 md:mb-20">
+          <div className="reveal eyebrow justify-center mb-8" style={{ display: "inline-flex" }}>
             Tarifs
           </div>
           <h2
@@ -47,18 +47,18 @@ export default function Pricing() {
             }}
           >
             Simple et{" "}
-            <span style={{ color: "var(--color-sage-500)", fontStyle: "italic", fontWeight: 400 }}>
+            <span style={{ color: "var(--color-terra-500)", fontStyle: "italic", fontWeight: 400 }}>
               accessible
             </span>
           </h2>
         </div>
 
         <div className="max-w-md mx-auto">
-          <ul className="reveal mb-8">
+          <ul className="reveal mb-14">
             {highlights.map((h, i) => (
               <li
                 key={h.label}
-                className="py-5 flex items-baseline justify-between gap-4"
+                className="py-7 flex items-baseline justify-between gap-6"
                 style={{
                   borderTop: "1px solid var(--color-ink-200)",
                   borderBottom: i === highlights.length - 1 ? "1px solid var(--color-ink-200)" : "none",
@@ -82,7 +82,7 @@ export default function Pricing() {
             ))}
           </ul>
 
-          <div className="reveal flex flex-col gap-3">
+          <div className="reveal flex flex-col gap-4">
             <a
               href="https://app.peppy.cool"
               target="_blank"

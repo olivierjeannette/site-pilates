@@ -42,36 +42,36 @@ export default function LeadMagnet() {
     >
       <div className="container-app">
         <div className="max-w-md mx-auto text-center">
-          <div className="reveal eyebrow justify-center mb-6" style={{ display: "inline-flex" }}>
+          <div className="reveal eyebrow justify-center mb-8" style={{ display: "inline-flex" }}>
             Cadeau gratuit
           </div>
 
           <h2
-            className="reveal h-display text-balance mb-4"
+            className="reveal h-display text-balance mb-6"
             style={{
               fontSize: "clamp(1.875rem, 5vw, 2.5rem)",
               color: "var(--color-ink-900)",
             }}
           >
             60 recettes santé{" "}
-            <span style={{ color: "var(--color-sage-500)", fontStyle: "italic", fontWeight: 400 }}>
+            <span style={{ color: "var(--color-terra-500)", fontStyle: "italic", fontWeight: 400 }}>
               offertes
             </span>
           </h2>
 
           <p
-            className="reveal text-pretty mb-8"
+            className="reveal text-pretty mb-12"
             style={{
               fontSize: "clamp(0.9375rem, 2vw, 1rem)",
               color: "var(--color-ink-500)",
-              lineHeight: 1.6,
+              lineHeight: 1.7,
             }}
           >
             Recevez gratuitement votre ebook pour mincir et rester en forme.
           </p>
 
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="reveal flex flex-col gap-3">
+            <form onSubmit={handleSubmit} className="reveal flex flex-col gap-4">
               <input
                 type="text"
                 value={name}
@@ -112,14 +112,14 @@ export default function LeadMagnet() {
               >
                 {loading ? "Envoi..." : "Recevoir mon ebook"}
               </button>
-              <p className="text-xs mt-2" style={{ color: "var(--color-ink-400)" }}>
+              <p className="text-xs mt-3" style={{ color: "var(--color-ink-400)" }}>
                 Pas de spam · Désabonnement en 1 clic
               </p>
             </form>
           ) : (
             <div className="reveal">
               <div
-                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5"
+                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
                 style={{ backgroundColor: "var(--color-sage-100)" }}
               >
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-sage-600)" strokeWidth="2.5">
@@ -127,7 +127,7 @@ export default function LeadMagnet() {
                 </svg>
               </div>
               <p
-                className="mb-2"
+                className="mb-3"
                 style={{
                   fontFamily: "var(--font-display)",
                   fontSize: "1.5rem",
@@ -138,7 +138,7 @@ export default function LeadMagnet() {
               >
                 Merci {name} !
               </p>
-              <p className="text-sm" style={{ color: "var(--color-ink-500)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--color-ink-500)" }}>
                 Votre ebook arrive dans votre boîte mail.
               </p>
             </div>

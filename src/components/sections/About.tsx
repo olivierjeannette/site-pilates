@@ -29,29 +29,29 @@ export default function About() {
     >
       <div className="container-app">
         <div className="max-w-2xl mx-auto text-center">
-          <div className="reveal eyebrow justify-center mb-6" style={{ display: "inline-flex" }}>
+          <div className="reveal eyebrow justify-center mb-8" style={{ display: "inline-flex" }}>
             À propos
           </div>
 
           <h2
-            className="reveal h-display text-balance mb-6"
+            className="reveal h-display text-balance mb-8"
             style={{
               fontSize: "clamp(2rem, 6vw, 3rem)",
               color: "var(--color-ink-900)",
             }}
           >
             Un studio pensé{" "}
-            <span style={{ color: "var(--color-sage-500)", fontStyle: "italic", fontWeight: 400 }}>
+            <span style={{ color: "var(--color-terra-500)", fontStyle: "italic", fontWeight: 400 }}>
               pour vous
             </span>
           </h2>
 
           <p
-            className="reveal text-pretty mb-8"
+            className="reveal text-pretty mb-12"
             style={{
               fontSize: "clamp(1rem, 2.2vw, 1.125rem)",
-              color: "var(--color-ink-500)",
-              lineHeight: 1.7,
+              color: "var(--color-ink-700)",
+              lineHeight: 1.75,
             }}
           >
             Eva Dussurgey vous accueille dans une ambiance familiale, en petits groupes de 8 à 10 personnes maximum. Sans jugement, sans performance — juste le plaisir de bouger.

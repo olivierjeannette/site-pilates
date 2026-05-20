@@ -30,29 +30,30 @@ export default function CTA() {
       <div className="container-app">
         <div className="max-w-xl mx-auto text-center">
           <h2
-            className="reveal h-display text-balance mb-6 text-white"
+            className="reveal h-display text-balance mb-8 text-white"
             style={{
               fontSize: "clamp(2rem, 6vw, 3rem)",
             }}
           >
             Votre 1ère séance{" "}
-            <span style={{ color: "var(--color-sage-200)", fontStyle: "italic", fontWeight: 400 }}>
+            <span style={{ color: "var(--color-terra-300)", fontStyle: "italic", fontWeight: 400 }}>
               est offerte
             </span>
           </h2>
 
           <p
-            className="reveal text-pretty mb-8"
+            className="reveal text-pretty mb-12"
             style={{
               fontSize: "clamp(0.9375rem, 2vw, 1rem)",
-              color: "rgba(255,255,255,0.65)",
-              lineHeight: 1.6,
+              color: "rgba(255,255,255,0.7)",
+              lineHeight: 1.7,
+              letterSpacing: "0.01em",
             }}
           >
             63 rue Jean Baptiste Lafosse, Laval
           </p>
 
-          <div className="reveal flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="reveal flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="https://app.peppy.cool"
               target="_blank"
