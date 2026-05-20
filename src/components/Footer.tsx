@@ -14,10 +14,10 @@ export default function Footer() {
       className="relative"
       style={{ backgroundColor: "var(--color-bg)", borderTop: "1px solid var(--color-ink-200)" }}
     >
-      <div className="container-app py-12">
+      <div className="container-app py-16">
         <div className="max-w-md mx-auto text-center">
           {/* Logo */}
-          <Link href="/" className="inline-flex items-center gap-2.5 mb-6">
+          <Link href="/" className="inline-flex items-center gap-2.5 mb-8">
             <span
               className="flex items-center justify-center rounded-full"
               style={{
@@ -60,7 +60,7 @@ export default function Footer() {
           </Link>
 
           {/* Nav */}
-          <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2 mb-8">
+          <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3 mb-10">
             {links.map((link) => (
               <li key={link.href}>
                 <Link
@@ -75,7 +75,7 @@ export default function Footer() {
           </ul>
 
           {/* Contact */}
-          <div className="flex flex-wrap justify-center gap-4 mb-6 text-xs" style={{ color: "var(--color-ink-500)" }}>
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 mb-8 text-xs" style={{ color: "var(--color-ink-500)" }}>
             <a href="tel:+33627508536" className="hover:underline">
               06 27 50 85 36
             </a>
@@ -94,11 +94,11 @@ export default function Footer() {
             </a>
           </div>
 
-          <p className="text-xs" style={{ color: "var(--color-ink-400)" }}>
+          <p className="text-xs leading-relaxed" style={{ color: "var(--color-ink-400)" }}>
             63 rue Jean Baptiste Lafosse, 53000 Laval
           </p>
 
-          <p className="text-xs mt-6 pt-6" style={{ color: "var(--color-ink-400)", borderTop: "1px solid var(--color-ink-200)" }}>
+          <p className="text-xs mt-10 pt-8" style={{ color: "var(--color-ink-400)", borderTop: "1px solid var(--color-ink-200)" }}>
             © {new Date().getFullYear()} Studio Pilates by Skàli
           </p>
         </div>
