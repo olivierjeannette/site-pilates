@@ -6,47 +6,44 @@ import gsap from "gsap";
 import Link from "next/link";
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
+  const eyebrowRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
   const ctasRef = useRef<HTMLDivElement>(null);
-  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
-  const shapesRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+  const visualRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    tl.from(shapesRef.current, { opacity: 0, scale: 0.8, duration: 1.5 })
+    tl.from(eyebrowRef.current, { y: 20, opacity: 0, duration: 0.7, delay: 0.2 })
       .from(
-        headingRef.current,
-        { y: 60, opacity: 0, duration: 1 },
-        "-=1"
+        headingRef.current?.querySelectorAll(".line") ?? [],
+        { y: 60, opacity: 0, duration: 1, stagger: 0.12 },
+        "-=0.4"
       )
-      .from(subRef.current, { y: 40, opacity: 0, duration: 0.8 }, "-=0.6")
-      .from(ctasRef.current, { y: 30, opacity: 0, duration: 0.7 }, "-=0.5")
-      .from(scrollIndicatorRef.current, { opacity: 0, duration: 0.6 }, "-=0.3");
+      .from(subRef.current, { y: 30, opacity: 0, duration: 0.7 }, "-=0.6")
+      .from(ctasRef.current?.children ?? [], { y: 20, opacity: 0, duration: 0.6, stagger: 0.1 }, "-=0.4")
+      .from(statsRef.current?.children ?? [], { y: 20, opacity: 0, duration: 0.6, stagger: 0.1 }, "-=0.3")
+      .from(visualRef.current, { scale: 0.85, opacity: 0, duration: 1.2, ease: "power3.out" }, "-=1.5");
 
-    const blob1 = shapesRef.current?.querySelector(".blob-1");
-    const blob2 = shapesRef.current?.querySelector(".blob-2");
-    if (blob1) {
-      gsap.to(blob1, {
-        y: 20,
-        x: -10,
-        duration: 4,
+    // Subtle parallax on visual
+    if (visualRef.current) {
+      gsap.to(visualRef.current.querySelector(".float-1"), {
+        y: -12,
+        duration: 3,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
       });
-    }
-    if (blob2) {
-      gsap.to(blob2, {
-        y: -15,
-        x: 15,
-        duration: 5,
+      gsap.to(visualRef.current.querySelector(".float-2"), {
+        y: 14,
+        duration: 4,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
-        delay: 1,
+        delay: 0.5,
       });
     }
   }, []);
@@ -54,180 +51,245 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ backgroundColor: "var(--color-warm-white)" }}
+      className="relative overflow-hidden"
+      style={{
+        backgroundColor: "var(--color-bg)",
+        paddingTop: "100px",
+        paddingBottom: "60px",
+        minHeight: "100vh",
+      }}
     >
-      {/* Background decorative blobs */}
-      <div ref={shapesRef} className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div
-          className="blob-1 absolute rounded-full opacity-20"
-          style={{
-            width: "600px",
-            height: "600px",
-            background: "radial-gradient(circle, var(--color-sage-light), transparent 70%)",
-            top: "-100px",
-            right: "-100px",
-          }}
-        />
-        <div
-          className="blob-2 absolute rounded-full opacity-15"
-          style={{
-            width: "400px",
-            height: "400px",
-            background: "radial-gradient(circle, var(--color-terracotta-light), transparent 70%)",
-            bottom: "50px",
-            left: "-80px",
-          }}
-        />
-        <div
-          className="absolute opacity-10"
-          style={{
-            width: "300px",
-            height: "300px",
-            background: "radial-gradient(circle, var(--color-sage), transparent 70%)",
-            top: "40%",
-            left: "50%",
-          }}
-        />
-      </div>
-
-      {/* Decorative circle outline */}
+      {/* Soft background gradient */}
       <div
-        className="absolute hidden lg:block"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          width: "520px",
-          height: "520px",
-          border: "1px solid rgba(139,158,126,0.2)",
-          borderRadius: "50%",
-          top: "50%",
-          right: "8%",
-          transform: "translateY(-50%)",
-        }}
-      />
-      <div
-        className="absolute hidden lg:block"
-        style={{
-          width: "380px",
-          height: "380px",
-          border: "1px solid rgba(139,158,126,0.15)",
-          borderRadius: "50%",
-          top: "50%",
-          right: "12%",
-          transform: "translateY(-50%)",
+          background:
+            "radial-gradient(80% 60% at 100% 0%, var(--color-sage-100) 0%, transparent 60%), radial-gradient(60% 50% at 0% 100%, rgba(229,160,136,0.15) 0%, transparent 60%)",
         }}
       />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-20 w-full">
-        <div className="max-w-2xl">
-          {/* Eyebrow */}
-          <p
-            className="text-xs font-semibold uppercase tracking-widest mb-6 flex items-center gap-3"
-            style={{ color: "var(--color-sage)", letterSpacing: "0.25em" }}
-          >
-            <span
-              className="inline-block w-8 h-px"
-              style={{ backgroundColor: "var(--color-sage)" }}
-            />
-            Studio Pilates · Laval
-          </p>
+      <div className="container-app relative z-10">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
+          {/* Left: text */}
+          <div className="order-2 lg:order-1">
+            <div ref={eyebrowRef} className="eyebrow mb-5">
+              Studio Pilates · Laval
+            </div>
 
-          <h1
-            ref={headingRef}
-            className="text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight mb-8"
-            style={{ fontFamily: "var(--font-heading)", color: "var(--color-charcoal)" }}
-          >
-            Bougez.{" "}
-            <span style={{ color: "var(--color-sage-dark)" }}>Respirez.</span>
-            <br />
-            Réveillez-vous.
-          </h1>
-
-          <p
-            ref={subRef}
-            className="text-lg md:text-xl leading-relaxed mb-10 max-w-xl"
-            style={{ color: "var(--color-charcoal-light)" }}
-          >
-            Des cours de Pilates Matwork en petits groupes de 8 à 10 personnes maximum, adaptés à tous les niveaux. Un espace chaleureux, sans jugement, pour prendre soin de vous.
-          </p>
-
-          <div ref={ctasRef} className="flex flex-col sm:flex-row gap-4">
-            <a
-              href="https://app.peppy.cool"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white font-medium text-base transition-all duration-300 hover:scale-105 hover:shadow-xl"
-              style={{ backgroundColor: "var(--color-terracotta)" }}
-            >
-              Séance d&apos;essai gratuite
-              <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </a>
-            <Link
-              href="/cours"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-medium text-base border-2 transition-all duration-300 hover:scale-105"
+            <h1
+              ref={headingRef}
+              className="h-display text-balance mb-6"
               style={{
-                borderColor: "var(--color-sage)",
-                color: "var(--color-sage-dark)",
+                fontSize: "clamp(2.5rem, 9vw, 5rem)",
+                color: "var(--color-ink-900)",
               }}
             >
-              Découvrir les cours
-            </Link>
+              <span className="line block">Bougez.</span>
+              <span className="line block" style={{ color: "var(--color-sage-500)", fontStyle: "italic", fontWeight: 400 }}>
+                Respirez.
+              </span>
+              <span className="line block">Réveillez-vous.</span>
+            </h1>
+
+            <p
+              ref={subRef}
+              className="text-pretty mb-8 max-w-lg"
+              style={{
+                fontSize: "clamp(1rem, 2.2vw, 1.125rem)",
+                color: "var(--color-ink-500)",
+                lineHeight: 1.6,
+              }}
+            >
+              Pilates Matwork à Laval en petits groupes de 8 à 10 personnes maximum. Tous niveaux, ambiance bienveillante, séance d&apos;essai offerte.
+            </p>
+
+            <div ref={ctasRef} className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-12">
+              <a
+                href="https://app.peppy.cool"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
+                Séance d&apos;essai gratuite
+                <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </a>
+              <Link href="/cours" className="btn-secondary">
+                Découvrir les cours
+              </Link>
+            </div>
+
+            {/* Stats */}
+            <div
+              ref={statsRef}
+              className="grid grid-cols-3 gap-4 sm:gap-8 pt-8"
+              style={{ borderTop: "1px solid var(--color-ink-200)" }}
+            >
+              {[
+                { num: "+15", lbl: "séances / sem." },
+                { num: "8–10", lbl: "pers. max" },
+                { num: "100%", lbl: "bienveillant" },
+              ].map((s) => (
+                <div key={s.lbl}>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "clamp(1.5rem, 4vw, 2rem)",
+                      fontWeight: 500,
+                      color: "var(--color-sage-600)",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    {s.num}
+                  </div>
+                  <div
+                    className="text-xs mt-1"
+                    style={{ color: "var(--color-ink-500)", fontWeight: 500 }}
+                  >
+                    {s.lbl}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Stats */}
-          <div className="flex gap-10 mt-14 pt-10" style={{ borderTop: "1px solid var(--color-cream-dark)" }}>
-            {[
-              { number: "+15", label: "séances / semaine" },
-              { number: "8–10", label: "personnes max" },
-              { number: "100%", label: "bienveillant" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p
-                  className="text-2xl font-semibold"
-                  style={{ fontFamily: "var(--font-heading)", color: "var(--color-sage-dark)" }}
+          {/* Right: visual */}
+          <div ref={visualRef} className="order-1 lg:order-2 relative">
+            <div className="relative mx-auto" style={{ maxWidth: "480px" }}>
+              {/* Main card */}
+              <div
+                className="float-1 relative overflow-hidden rounded-[32px] aspect-[4/5]"
+                style={{
+                  background: "linear-gradient(135deg, var(--color-sage-500) 0%, var(--color-sage-600) 100%)",
+                  boxShadow: "0 30px 60px -20px rgba(85,102,73,0.4)",
+                }}
+              >
+                {/* Concentric circles */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <div
+                      key={i}
+                      className="absolute rounded-full border"
+                      style={{
+                        width: `${i * 90}px`,
+                        height: `${i * 90}px`,
+                        borderColor: "rgba(255,255,255,0.08)",
+                      }}
+                    />
+                  ))}
+                </div>
+
+                {/* Centered word */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8">
+                  <span
+                    className="text-[10px] uppercase tracking-[0.3em] mb-3 font-semibold"
+                    style={{ color: "rgba(255,255,255,0.6)" }}
+                  >
+                    Pratique douce
+                  </span>
+                  <p
+                    className="text-white"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "clamp(3rem, 10vw, 4.5rem)",
+                      fontWeight: 400,
+                      fontStyle: "italic",
+                      letterSpacing: "-0.02em",
+                      lineHeight: 1,
+                    }}
+                  >
+                    Pilates
+                  </p>
+                  <span
+                    className="text-[10px] uppercase tracking-[0.3em] mt-3 font-semibold"
+                    style={{ color: "rgba(255,255,255,0.6)" }}
+                  >
+                    Matwork · Laval
+                  </span>
+                </div>
+
+                {/* Corner badge */}
+                <div
+                  className="absolute top-5 right-5 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-wider"
+                  style={{
+                    backgroundColor: "rgba(255,255,255,0.15)",
+                    backdropFilter: "blur(10px)",
+                    WebkitBackdropFilter: "blur(10px)",
+                    color: "white",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                  }}
                 >
-                  {stat.number}
-                </p>
-                <p className="text-xs mt-1" style={{ color: "var(--color-charcoal-light)" }}>
-                  {stat.label}
-                </p>
+                  Depuis 2023
+                </div>
               </div>
-            ))}
+
+              {/* Floating card – top right */}
+              <div
+                className="float-2 absolute -right-2 sm:-right-4 -top-4 rounded-2xl px-4 py-3 shadow-xl"
+                style={{
+                  backgroundColor: "var(--color-bg)",
+                  border: "1px solid var(--color-ink-200)",
+                }}
+              >
+                <div className="flex items-center gap-3">
+                  <div
+                    className="w-9 h-9 rounded-full flex items-center justify-center text-white text-base"
+                    style={{ backgroundColor: "var(--color-cta)" }}
+                  >
+                    ✨
+                  </div>
+                  <div>
+                    <div className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: "var(--color-ink-500)" }}>
+                      Nouveaux
+                    </div>
+                    <div
+                      className="text-sm font-semibold leading-tight"
+                      style={{ color: "var(--color-ink-900)" }}
+                    >
+                      Essai offert
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating card – bottom left */}
+              <div
+                className="float-1 absolute -left-2 sm:-left-6 -bottom-4 rounded-2xl px-4 py-3 shadow-xl"
+                style={{
+                  backgroundColor: "var(--color-cream-100)",
+                  border: "1px solid var(--color-cream-300)",
+                }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex -space-x-2">
+                    {["E", "M", "S"].map((c, i) => (
+                      <div
+                        key={i}
+                        className="w-7 h-7 rounded-full flex items-center justify-center text-white text-[11px] font-semibold border-2"
+                        style={{
+                          backgroundColor: i === 0 ? "var(--color-sage-400)" : i === 1 ? "var(--color-terra-400)" : "var(--color-sage-500)",
+                          borderColor: "var(--color-cream-100)",
+                        }}
+                      >
+                        {c}
+                      </div>
+                    ))}
+                  </div>
+                  <div>
+                    <div className="text-[11px] font-semibold leading-tight" style={{ color: "var(--color-ink-900)" }}>
+                      +120 élèves
+                    </div>
+                    <div className="text-[10px]" style={{ color: "var(--color-ink-500)" }}>
+                      nous font confiance
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <div
-        ref={scrollIndicatorRef}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-xs uppercase tracking-widest" style={{ color: "var(--color-sage)", letterSpacing: "0.2em" }}>
-          Défiler
-        </span>
-        <div
-          className="w-px h-10 relative overflow-hidden"
-          style={{ backgroundColor: "rgba(139,158,126,0.2)" }}
-        >
-          <div
-            className="w-full bg-current absolute"
-            style={{
-              height: "50%",
-              backgroundColor: "var(--color-sage)",
-              animation: "scrollLine 1.5s ease-in-out infinite",
-            }}
-          />
-        </div>
-      </div>
-
-      <style>{`
-        @keyframes scrollLine {
-          0% { top: -50%; }
-          100% { top: 150%; }
-        }
-      `}</style>
     </section>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { Metadata } from "next";
+import PageHeader from "@/components/PageHeader";
 import CTA from "@/components/sections/CTA";
 
 const faqs = [
@@ -47,89 +47,124 @@ const faqs = [
   },
 ];
 
-function FaqItem({ q, a }: { q: string; a: string }) {
+function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(false);
   return (
     <div
-      className="rounded-2xl overflow-hidden transition-all duration-200"
-      style={{ border: "1px solid var(--color-cream-dark)", backgroundColor: "var(--color-warm-white)" }}
+      className="rounded-3xl overflow-hidden transition-all duration-300"
+      style={{
+        backgroundColor: open ? "var(--color-cream-100)" : "var(--color-bg)",
+        border: `1px solid ${open ? "var(--color-sage-300)" : "var(--color-ink-200)"}`,
+      }}
     >
       <button
-        className="w-full text-left px-6 py-5 flex items-center justify-between gap-4"
+        className="w-full text-left px-5 sm:px-7 py-5 flex items-center justify-between gap-4"
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
       >
-        <span className="text-sm font-semibold" style={{ color: "var(--color-charcoal)" }}>
-          {q}
-        </span>
+        <div className="flex items-start gap-4 flex-1">
+          <span
+            className="text-xs font-semibold mt-1 flex-shrink-0"
+            style={{ color: "var(--color-sage-500)", letterSpacing: "0.1em" }}
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span
+            className="text-base font-medium flex-1"
+            style={{ color: "var(--color-ink-900)", lineHeight: 1.4 }}
+          >
+            {q}
+          </span>
+        </div>
         <span
-          className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-transform duration-300"
+          className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
           style={{
-            backgroundColor: open ? "var(--color-sage)" : "var(--color-cream-dark)",
-            color: open ? "white" : "var(--color-charcoal-light)",
+            backgroundColor: open ? "var(--color-ink-900)" : "var(--color-sage-100)",
+            color: open ? "white" : "var(--color-ink-900)",
             transform: open ? "rotate(45deg)" : "none",
           }}
         >
-          <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+          <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>
         </span>
       </button>
-      {open && (
-        <div className="px-6 pb-5">
-          <p className="text-sm leading-relaxed" style={{ color: "var(--color-charcoal-light)" }}>
+      <div
+        className="overflow-hidden transition-all duration-400"
+        style={{
+          maxHeight: open ? "400px" : "0px",
+          opacity: open ? 1 : 0,
+        }}
+      >
+        <div className="px-5 sm:px-7 pb-5 pl-12 sm:pl-16">
+          <p className="text-sm" style={{ color: "var(--color-ink-500)", lineHeight: 1.7 }}>
             {a}
           </p>
         </div>
-      )}
+      </div>
     </div>
   );
 }
 
-// metadata cannot be exported from a "use client" component — handled at segment level
 export default function FaqPage() {
   return (
     <>
-      <div className="pt-32 pb-16 text-center" style={{ backgroundColor: "var(--color-cream)" }}>
-        <p
-          className="text-xs font-semibold uppercase tracking-widest mb-4 flex items-center justify-center gap-3"
-          style={{ color: "var(--color-sage)", letterSpacing: "0.25em" }}
-        >
-          <span className="inline-block w-6 h-px" style={{ backgroundColor: "var(--color-sage)" }} />
-          Studio Pilates by Skàli
-        </p>
-        <h1
-          className="text-5xl md:text-6xl font-semibold"
-          style={{ fontFamily: "var(--font-heading)", color: "var(--color-charcoal)" }}
-        >
-          Questions{" "}
-          <span style={{ color: "var(--color-sage-dark)", fontStyle: "italic" }}>fréquentes</span>
-        </h1>
-        <p className="mt-4 max-w-xl mx-auto text-base px-6" style={{ color: "var(--color-charcoal-light)" }}>
-          Vous ne trouvez pas votre réponse ? Contactez Eva directement.
-        </p>
-        <div className="flex flex-wrap justify-center gap-3 mt-6">
-          <a
-            href="tel:+33627508536"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all hover:scale-105"
-            style={{ backgroundColor: "var(--color-sage)", color: "white" }}
-          >
-            06 27 50 85 36
-          </a>
-          <a
-            href="mailto:pilatesbyskali@gmail.com"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all hover:scale-105"
-            style={{ border: "1px solid var(--color-sage)", color: "var(--color-sage-dark)" }}
-          >
-            pilatesbyskali@gmail.com
-          </a>
-        </div>
-      </div>
+      <PageHeader
+        eyebrow="Besoin d'aide ?"
+        title="Questions"
+        highlight="fréquentes"
+        subtitle="Tout ce que vous devez savoir avant de venir au studio. Vous ne trouvez pas votre réponse ? Contactez Eva directement."
+      />
 
-      <section className="py-16 max-w-3xl mx-auto px-6">
-        <div className="space-y-3">
-          {faqs.map((faq) => (
-            <FaqItem key={faq.q} q={faq.q} a={faq.a} />
-          ))}
+      <section className="section-y" style={{ backgroundColor: "var(--color-bg)" }}>
+        <div className="container-app max-w-3xl">
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <FaqItem key={faq.q} q={faq.q} a={faq.a} index={i} />
+            ))}
+          </div>
+
+          {/* Contact card */}
+          <div
+            className="mt-12 rounded-3xl p-7 sm:p-9 text-center"
+            style={{
+              backgroundColor: "var(--color-cream-100)",
+              border: "1px solid var(--color-cream-300)",
+            }}
+          >
+            <h3
+              className="mb-2"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "1.5rem",
+                fontWeight: 500,
+                color: "var(--color-ink-900)",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Une autre question ?
+            </h3>
+            <p className="text-sm mb-6" style={{ color: "var(--color-ink-500)" }}>
+              Eva vous répond rapidement par téléphone ou par email.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href="tel:+33627508536"
+                className="btn-primary"
+              >
+                <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                </svg>
+                Appeler Eva
+              </a>
+              <a
+                href="mailto:pilatesbyskali@gmail.com"
+                className="btn-secondary"
+              >
+                Envoyer un email
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 

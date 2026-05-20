@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PageHeader from "@/components/PageHeader";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
@@ -61,129 +62,158 @@ const schedule = [
 ];
 
 const levelColors: Record<string, { bg: string; text: string }> = {
-  "Tous niveaux": { bg: "var(--color-sage)", text: "white" },
-  "Débutants": { bg: "var(--color-sage-light)", text: "white" },
-  "Intermédiaire": { bg: "var(--color-terracotta-light)", text: "white" },
-  "Avancé": { bg: "var(--color-terracotta)", text: "white" },
-  "Spécialisé": { bg: "var(--color-charcoal-light)", text: "white" },
+  "Tous niveaux": { bg: "var(--color-sage-500)", text: "white" },
+  "Débutants": { bg: "var(--color-sage-300)", text: "white" },
+  "Intermédiaire": { bg: "var(--color-terra-400)", text: "white" },
+  "Avancé": { bg: "var(--color-terra-500)", text: "white" },
+  "Spécialisé": { bg: "var(--color-ink-700)", text: "white" },
 };
 
 export default function PlanningPage() {
   return (
     <>
-      <div className="pt-32 pb-16 text-center" style={{ backgroundColor: "var(--color-cream)" }}>
-        <p
-          className="text-xs font-semibold uppercase tracking-widest mb-4 flex items-center justify-center gap-3"
-          style={{ color: "var(--color-sage)", letterSpacing: "0.25em" }}
-        >
-          <span className="inline-block w-6 h-px" style={{ backgroundColor: "var(--color-sage)" }} />
-          Studio Pilates by Skàli
-        </p>
-        <h1
-          className="text-5xl md:text-6xl font-semibold"
-          style={{ fontFamily: "var(--font-heading)", color: "var(--color-charcoal)" }}
-        >
-          <span style={{ color: "var(--color-sage-dark)", fontStyle: "italic" }}>Planning</span> des cours
-        </h1>
-        <p className="mt-4 max-w-xl mx-auto text-base px-6" style={{ color: "var(--color-charcoal-light)" }}>
-          Plus de 15 séances par semaine. Annulation possible jusqu&apos;à 30 minutes avant le début du cours.
-        </p>
-        <div className="mt-6">
-          <a
-            href="https://app.peppy.cool"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium text-white transition-all hover:scale-105"
-            style={{ backgroundColor: "var(--color-terracotta)" }}
-          >
-            Réserver via l&apos;app Peppy
-          </a>
-        </div>
-      </div>
+      <PageHeader
+        eyebrow="Studio Pilates by Skàli"
+        title="Notre"
+        highlight="planning"
+        subtitle="Plus de 15 séances par semaine. Annulation possible jusqu'à 30 minutes avant le début du cours."
+      />
 
-      <section className="py-16 max-w-6xl mx-auto px-6">
-        {/* Legend */}
-        <div className="flex flex-wrap gap-3 mb-10 justify-center">
-          {Object.entries(levelColors).map(([level, colors]) => (
-            <span
-              key={level}
-              className="px-3 py-1 rounded-full text-xs font-medium"
-              style={{ backgroundColor: colors.bg, color: colors.text }}
-            >
-              {level}
-            </span>
-          ))}
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {schedule.map((day) => (
-            <div
-              key={day.day}
-              className="rounded-3xl overflow-hidden"
-              style={{ border: "1px solid var(--color-cream-dark)" }}
-            >
-              <div
-                className="px-6 py-4"
-                style={{ backgroundColor: "var(--color-sage)", color: "white" }}
+      <section className="section-y" style={{ backgroundColor: "var(--color-bg)" }}>
+        <div className="container-app">
+          {/* Legend */}
+          <div className="flex flex-wrap gap-2 mb-8 sm:mb-10 justify-center">
+            {Object.entries(levelColors).map(([level, colors]) => (
+              <span
+                key={level}
+                className="px-3 py-1.5 rounded-full text-[11px] font-medium"
+                style={{ backgroundColor: colors.bg, color: colors.text }}
               >
-                <h2 className="text-lg font-semibold" style={{ fontFamily: "var(--font-heading)" }}>
-                  {day.day}
-                </h2>
-                <p className="text-xs text-white/70">{day.slots.length} séance{day.slots.length > 1 ? "s" : ""}</p>
-              </div>
-              <div style={{ backgroundColor: "var(--color-warm-white)" }}>
-                {day.slots.map((slot, i) => (
-                  <div
-                    key={i}
-                    className="px-6 py-4 flex items-center justify-between"
-                    style={{ borderBottom: i < day.slots.length - 1 ? "1px solid var(--color-cream-dark)" : "none" }}
-                  >
-                    <div>
-                      <p className="text-sm font-semibold" style={{ color: "var(--color-charcoal)" }}>
-                        {slot.time}
-                      </p>
-                      <p className="text-xs mt-0.5" style={{ color: "var(--color-charcoal-light)" }}>
-                        {slot.type}
-                      </p>
-                    </div>
-                    <span
-                      className="px-2.5 py-1 rounded-full text-xs font-medium"
+                {level}
+              </span>
+            ))}
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+            {schedule.map((day) => (
+              <div
+                key={day.day}
+                className="rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl"
+                style={{
+                  backgroundColor: "var(--color-cream-100)",
+                  border: "1px solid var(--color-cream-300)",
+                }}
+              >
+                <div
+                  className="px-5 py-4 flex items-center justify-between"
+                  style={{ backgroundColor: "var(--color-ink-900)", color: "white" }}
+                >
+                  <div>
+                    <h2
                       style={{
-                        backgroundColor: levelColors[slot.level]?.bg ?? "var(--color-sage)",
-                        color: levelColors[slot.level]?.text ?? "white",
-                        fontSize: "0.65rem",
+                        fontFamily: "var(--font-display)",
+                        fontSize: "1.25rem",
+                        fontWeight: 500,
+                        letterSpacing: "-0.01em",
                       }}
                     >
-                      {slot.level}
-                    </span>
+                      {day.day}
+                    </h2>
+                    <p className="text-[11px] mt-0.5" style={{ color: "var(--color-sage-200)" }}>
+                      {day.slots.length} séance{day.slots.length > 1 ? "s" : ""}
+                    </p>
                   </div>
-                ))}
+                  <span
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold"
+                    style={{ backgroundColor: "var(--color-sage-500)" }}
+                  >
+                    {day.day.charAt(0)}
+                  </span>
+                </div>
+                <div>
+                  {day.slots.map((slot, i) => (
+                    <div
+                      key={i}
+                      className="px-5 py-3.5 flex items-center justify-between gap-3"
+                      style={{ borderBottom: i < day.slots.length - 1 ? "1px solid var(--color-cream-300)" : "none" }}
+                    >
+                      <div className="flex items-center gap-3 min-w-0">
+                        <span
+                          style={{
+                            fontFamily: "var(--font-display)",
+                            fontSize: "1rem",
+                            fontWeight: 500,
+                            color: "var(--color-ink-900)",
+                            minWidth: "52px",
+                          }}
+                        >
+                          {slot.time}
+                        </span>
+                        <p className="text-xs truncate" style={{ color: "var(--color-ink-500)" }}>
+                          {slot.type}
+                        </p>
+                      </div>
+                      <span
+                        className="px-2 py-0.5 rounded-full text-[9px] font-semibold whitespace-nowrap"
+                        style={{
+                          backgroundColor: levelColors[slot.level]?.bg ?? "var(--color-sage-500)",
+                          color: levelColors[slot.level]?.text ?? "white",
+                        }}
+                      >
+                        {slot.level}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div
-          className="mt-10 rounded-2xl p-6 flex items-start gap-4"
-          style={{ backgroundColor: "var(--color-cream)", border: "1px solid var(--color-cream-dark)" }}
-        >
-          <span className="text-2xl">ℹ️</span>
-          <div>
-            <p className="text-sm font-semibold mb-1" style={{ color: "var(--color-charcoal)" }}>
-              Réservation en ligne
-            </p>
-            <p className="text-sm" style={{ color: "var(--color-charcoal-light)" }}>
-              Les réservations se font via l&apos;application <strong>Peppy</strong>. Annulation possible jusqu&apos;à 30 min avant le cours. Le planning ci-dessus est indicatif — consultez l&apos;app pour les créneaux exacts et les disponibilités en temps réel.
-            </p>
-            <a
-              href="https://app.peppy.cool"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 mt-3 text-sm font-medium hover:underline"
-              style={{ color: "var(--color-sage-dark)" }}
+          {/* Info card */}
+          <div
+            className="mt-10 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-start gap-4 sm:gap-6"
+            style={{
+              backgroundColor: "var(--color-cream-100)",
+              border: "1px solid var(--color-cream-300)",
+            }}
+          >
+            <div
+              className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+              style={{ backgroundColor: "var(--color-sage-500)", color: "white" }}
             >
-              Ouvrir l&apos;app Peppy →
-            </a>
+              <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <p
+                className="mb-2"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "1.25rem",
+                  fontWeight: 500,
+                  color: "var(--color-ink-900)",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                Réservation en ligne
+              </p>
+              <p className="text-sm mb-4" style={{ color: "var(--color-ink-500)", lineHeight: 1.6 }}>
+                Les réservations se font via l&apos;application <strong>Peppy</strong>. Annulation possible jusqu&apos;à 30 min avant le cours. Le planning ci-dessus est indicatif — consultez l&apos;app pour les disponibilités en temps réel.
+              </p>
+              <a
+                href="https://app.peppy.cool"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+                style={{ padding: "10px 18px", fontSize: "13px", minHeight: "auto" }}
+              >
+                Ouvrir l&apos;app Peppy
+                <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>
