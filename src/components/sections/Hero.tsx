@@ -43,8 +43,8 @@ export default function Hero() {
           allow="autoplay; encrypted-media"
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           style={{
-            width: "max(100vw, 56.25vh)",
-            height: "max(177.78vw, 100vh)",
+            width: "max(130vw, 73vh)",
+            height: "max(231vw, 130vh)",
             border: 0,
           }}
         />
