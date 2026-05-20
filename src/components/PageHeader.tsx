@@ -29,13 +29,13 @@ export default function PageHeader({ eyebrow, title, highlight, subtitle }: Page
     <section
       className="relative"
       style={{
-        paddingTop: "160px",
-        paddingBottom: "80px",
+        paddingTop: "200px",
+        paddingBottom: "120px",
         backgroundColor: "var(--color-bg)",
       }}
     >
       <div className="container-app text-center" ref={ref}>
-        <div className="eyebrow justify-center mb-8" style={{ display: "inline-flex" }}>
+        <div className="eyebrow justify-center mb-12" style={{ display: "inline-flex" }}>
           {eyebrow}
         </div>
         <h1
@@ -54,11 +54,11 @@ export default function PageHeader({ eyebrow, title, highlight, subtitle }: Page
         </h1>
         {subtitle && (
           <p
-            className="mt-8 max-w-md mx-auto text-pretty"
+            className="mt-10 max-w-md mx-auto text-pretty"
             style={{
               fontSize: "clamp(0.9375rem, 2vw, 1rem)",
               color: "var(--color-ink-500)",
-              lineHeight: 1.7,
+              lineHeight: 1.8,
             }}
           >
             {subtitle}

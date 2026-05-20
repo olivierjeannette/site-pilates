@@ -35,13 +35,13 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
     <li
-      className="py-5"
+      className="py-8"
       style={{
         borderTop: "1px solid var(--color-ink-200)",
       }}
     >
       <button
-        className="w-full text-left flex items-center justify-between gap-4"
+        className="w-full text-left flex items-center justify-between gap-6"
         onClick={() => setOpen(!open)}
         aria-expanded={open}
       >
@@ -52,7 +52,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
           {q}
         </span>
         <span
-          className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-transform"
+          className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-transform"
           style={{
             backgroundColor: "var(--color-sage-100)",
             color: "var(--color-sage-600)",
@@ -67,11 +67,11 @@ function FaqItem({ q, a }: { q: string; a: string }) {
       <div
         className="overflow-hidden transition-all duration-300"
         style={{
-          maxHeight: open ? "200px" : "0px",
+          maxHeight: open ? "320px" : "0px",
           opacity: open ? 1 : 0,
         }}
       >
-        <p className="text-sm pt-4" style={{ color: "var(--color-ink-500)", lineHeight: 1.6 }}>
+        <p className="text-sm pt-6 pr-12" style={{ color: "var(--color-ink-500)", lineHeight: 1.8 }}>
           {a}
         </p>
       </div>
@@ -96,8 +96,8 @@ export default function FaqPage() {
             ))}
           </ul>
 
-          <div className="text-center mt-12">
-            <p className="text-sm mb-4" style={{ color: "var(--color-ink-500)" }}>
+          <div className="text-center mt-20">
+            <p className="text-sm mb-6" style={{ color: "var(--color-ink-500)" }}>
               Une autre question ?
             </p>
             <a href="tel:+33627508536" className="btn-primary">

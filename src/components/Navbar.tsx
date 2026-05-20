@@ -52,7 +52,7 @@ export default function Navbar() {
         }}
       >
         <nav className="container-app">
-          <div className="flex items-center justify-between" style={{ height: "68px" }}>
+          <div className="flex items-center justify-between" style={{ height: "76px" }}>
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2.5 group" aria-label="Accueil">
               <span
@@ -97,14 +97,14 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop nav */}
-            <ul className="hidden md:flex items-center gap-1">
+            <ul className="hidden md:flex items-center gap-2">
               {links.map((link) => {
                 const isActive = pathname === link.href;
                 return (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="relative px-4 py-2 text-sm font-medium transition-colors"
+                      className="relative px-5 py-3 text-sm font-medium transition-colors"
                       style={{
                         color: isActive ? "var(--color-sage-600)" : "var(--color-ink-700)",
                       }}
@@ -124,7 +124,7 @@ export default function Navbar() {
 
             <div className="flex items-center gap-2">
               <a
-                href="https://app.peppy.cool"
+                href="https://app.peppy.cool/quicksell/cm3odpadb7357411js28lc8vy46/book/trial/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:inline-flex btn-primary"
@@ -184,7 +184,7 @@ export default function Navbar() {
       {/* Mobile drawer */}
       <div
         ref={drawerRef}
-        className="md:hidden fixed top-[68px] left-0 right-0 z-40 transition-transform duration-500"
+        className="md:hidden fixed top-[76px] left-0 right-0 z-40 transition-transform duration-500"
         style={{
           transform: menuOpen ? "translateY(0)" : "translateY(-110%)",
           backgroundColor: "var(--color-bg)",
@@ -193,8 +193,8 @@ export default function Navbar() {
           boxShadow: "0 30px 60px -20px rgba(31,31,29,0.25)",
         }}
       >
-        <div className="px-6 pt-6 pb-8">
-          <ul className="flex flex-col gap-1 mb-6">
+        <div className="px-6 pt-8 pb-10">
+          <ul className="flex flex-col gap-2 mb-8">
             {links.map((link, i) => {
               const isActive = pathname === link.href;
               return (
@@ -209,7 +209,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className="flex items-center justify-between py-4 px-2"
+                    className="flex items-center justify-between py-6 px-2"
                     style={{
                       borderBottom: "1px solid var(--color-ink-200)",
                     }}
@@ -243,7 +243,7 @@ export default function Navbar() {
           </ul>
 
           <a
-            href="https://app.peppy.cool"
+            href="https://app.peppy.cool/quicksell/cm3odpadb7357411js28lc8vy46/book/trial/"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary w-full"
@@ -261,7 +261,7 @@ export default function Navbar() {
           </a>
 
           <div
-            className="mt-6 flex items-center justify-center gap-6 text-xs"
+            className="mt-8 flex items-center justify-center gap-6 text-xs"
             style={{
               color: "var(--color-ink-500)",
               transition: "all 0.4s var(--ease-out)",

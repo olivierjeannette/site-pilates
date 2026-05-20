@@ -30,7 +30,7 @@ export default function CTA() {
       <div className="container-app">
         <div className="max-w-xl mx-auto text-center">
           <h2
-            className="reveal h-display text-balance mb-8 text-white"
+            className="reveal h-display text-balance mb-10 text-white"
             style={{
               fontSize: "clamp(2rem, 6vw, 3rem)",
             }}
@@ -42,20 +42,20 @@ export default function CTA() {
           </h2>
 
           <p
-            className="reveal text-pretty mb-12"
+            className="reveal text-pretty mb-16"
             style={{
               fontSize: "clamp(0.9375rem, 2vw, 1rem)",
               color: "rgba(255,255,255,0.7)",
-              lineHeight: 1.7,
+              lineHeight: 1.8,
               letterSpacing: "0.01em",
             }}
           >
             63 rue Jean Baptiste Lafosse, Laval
           </p>
 
-          <div className="reveal flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="reveal flex flex-col sm:flex-row gap-5 justify-center">
             <a
-              href="https://app.peppy.cool"
+              href="https://app.peppy.cool/quicksell/cm3odpadb7357411js28lc8vy46/book/trial/"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"

@@ -67,7 +67,7 @@ export default function PricingDetailed() {
     >
       <div className="container-app">
         {/* Tabs */}
-        <div className="reveal flex justify-center mb-12">
+        <div className="reveal flex justify-center mb-16">
           <div
             className="inline-flex p-1.5 rounded-full"
             style={{
@@ -92,7 +92,7 @@ export default function PricingDetailed() {
         </div>
 
         {current.note && (
-          <p className="reveal text-center text-xs mb-12 tracking-wide" style={{ color: "var(--color-ink-500)" }}>
+          <p className="reveal text-center text-xs mb-16 tracking-wide" style={{ color: "var(--color-ink-500)" }}>
             ⓘ {current.note}
           </p>
         )}
@@ -102,7 +102,7 @@ export default function PricingDetailed() {
             {current.plans.map((plan, i) => (
               <li
                 key={plan.name}
-                className="py-8 flex items-baseline justify-between gap-6"
+                className="py-10 flex items-baseline justify-between gap-6"
                 style={{
                   borderTop: "1px solid var(--color-ink-200)",
                   borderBottom: i === current.plans.length - 1 ? "1px solid var(--color-ink-200)" : "none",
@@ -151,9 +151,9 @@ export default function PricingDetailed() {
             ))}
           </ul>
 
-          <div className="reveal mt-16 text-center">
+          <div className="reveal mt-20 text-center">
             <a
-              href="https://app.peppy.cool"
+              href="https://app.peppy.cool/quicksell/cm3odpadb7357411js28lc8vy46/offers/"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"

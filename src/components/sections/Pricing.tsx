@@ -35,8 +35,8 @@ export default function Pricing() {
       style={{ backgroundColor: "var(--color-cream-100)" }}
     >
       <div className="container-app">
-        <div className="max-w-2xl mx-auto text-center mb-16 md:mb-20">
-          <div className="reveal eyebrow justify-center mb-8" style={{ display: "inline-flex" }}>
+        <div className="max-w-2xl mx-auto text-center mb-20 md:mb-28">
+          <div className="reveal eyebrow justify-center mb-12" style={{ display: "inline-flex" }}>
             Tarifs
           </div>
           <h2
@@ -54,11 +54,11 @@ export default function Pricing() {
         </div>
 
         <div className="max-w-md mx-auto">
-          <ul className="reveal mb-14">
+          <ul className="reveal mb-16">
             {highlights.map((h, i) => (
               <li
                 key={h.label}
-                className="py-7 flex items-baseline justify-between gap-6"
+                className="py-9 flex items-baseline justify-between gap-6"
                 style={{
                   borderTop: "1px solid var(--color-ink-200)",
                   borderBottom: i === highlights.length - 1 ? "1px solid var(--color-ink-200)" : "none",
@@ -82,9 +82,9 @@ export default function Pricing() {
             ))}
           </ul>
 
-          <div className="reveal flex flex-col gap-4">
+          <div className="reveal flex flex-col gap-5">
             <a
-              href="https://app.peppy.cool"
+              href="https://app.peppy.cool/quicksell/cm3odpadb7357411js28lc8vy46/book/trial/"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"

@@ -70,7 +70,7 @@ body {
   color: var(--color-fg);
   font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -147,13 +147,13 @@ a {
 }
 
 .section-y {
-  padding-block: 64px;
+  padding-block: 96px;
 }
 @media (min-width: 768px) {
-  .section-y { padding-block: 96px; }
+  .section-y { padding-block: 136px; }
 }
 @media (min-width: 1024px) {
-  .section-y { padding-block: 128px; }
+  .section-y { padding-block: 176px; }
 }
 
 .eyebrow {

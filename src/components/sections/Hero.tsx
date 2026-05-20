@@ -28,26 +28,33 @@ export default function Hero() {
       style={{
         backgroundColor: "var(--color-bg)",
         minHeight: "100vh",
-        paddingTop: "120px",
-        paddingBottom: "80px",
+        paddingTop: "160px",
+        paddingBottom: "120px",
       }}
     >
       <div
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none overflow-hidden"
         style={{ zIndex: 0 }}
       >
-        <iframe
-          src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0&playlist=${YOUTUBE_VIDEO_ID}`}
-          title="Studio Pilates – ambiance"
-          allow="autoplay; encrypted-media"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        <div
+          className="absolute top-1/2 left-1/2"
           style={{
-            width: "max(130vw, 73vh)",
-            height: "max(231vw, 130vh)",
-            border: 0,
+            width: "100vw",
+            height: "56.25vw",
+            minHeight: "100vh",
+            minWidth: "177.78vh",
+            transform: "translate(-50%, -50%)",
           }}
-        />
+        >
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0&iv_load_policy=3&disablekb=1&fs=0&playlist=${YOUTUBE_VIDEO_ID}&vq=hd1080&hd=1`}
+            title="Studio Pilates – ambiance"
+            allow="autoplay; encrypted-media"
+            className="absolute inset-0 w-full h-full"
+            style={{ border: 0 }}
+          />
+        </div>
         <div
           className="absolute inset-0"
           style={{
@@ -59,14 +66,14 @@ export default function Hero() {
       <div className="container-app relative" style={{ zIndex: 1 }}>
         <div className="max-w-2xl mx-auto">
           <div
-            className="reveal eyebrow justify-center mb-10"
+            className="reveal eyebrow justify-center mb-14"
             style={{ display: "inline-flex", color: "rgba(255, 255, 255, 0.85)" }}
           >
             Studio Pilates · Laval
           </div>
 
           <h1
-            className="reveal h-display text-balance mb-8"
+            className="reveal h-display text-balance mb-10"
             style={{
               fontSize: "clamp(2.75rem, 10vw, 5rem)",
               color: "#ffffff",
@@ -80,11 +87,11 @@ export default function Hero() {
           </h1>
 
           <p
-            className="reveal text-pretty mb-14 max-w-md mx-auto"
+            className="reveal text-pretty mb-16 max-w-md mx-auto"
             style={{
               fontSize: "clamp(1rem, 2.5vw, 1.125rem)",
               color: "rgba(255, 255, 255, 0.92)",
-              lineHeight: 1.7,
+              lineHeight: 1.8,
               textShadow: "0 1px 10px rgba(0, 0, 0, 0.3)",
             }}
           >
@@ -93,9 +100,9 @@ export default function Hero() {
             Séance d&apos;essai offerte.
           </p>
 
-          <div className="reveal flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="reveal flex flex-col sm:flex-row gap-5 justify-center">
             <a
-              href="https://app.peppy.cool"
+              href="https://app.peppy.cool/quicksell/cm3odpadb7357411js28lc8vy46/book/trial/"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"

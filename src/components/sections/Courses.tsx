@@ -35,8 +35,8 @@ export default function Courses() {
       style={{ backgroundColor: "var(--color-bg)" }}
     >
       <div className="container-app">
-        <div className="max-w-2xl mx-auto text-center mb-16 md:mb-20">
-          <div className="reveal eyebrow justify-center mb-8" style={{ display: "inline-flex" }}>
+        <div className="max-w-2xl mx-auto text-center mb-20 md:mb-28">
+          <div className="reveal eyebrow justify-center mb-12" style={{ display: "inline-flex" }}>
             Nos cours
           </div>
           <h2
@@ -58,7 +58,7 @@ export default function Courses() {
             {courses.map((c, i) => (
               <li
                 key={c.title}
-                className="reveal py-8 flex items-center justify-between gap-8"
+                className="reveal py-10 flex items-center justify-between gap-8"
                 style={{
                   borderTop: "1px solid var(--color-ink-200)",
                   borderBottom: i === courses.length - 1 ? "1px solid var(--color-ink-200)" : "none",
@@ -66,7 +66,7 @@ export default function Courses() {
               >
                 <div className="flex-1">
                   <h3
-                    className="mb-2"
+                    className="mb-3"
                     style={{
                       fontFamily: "var(--font-display)",
                       fontSize: "clamp(1.25rem, 3vw, 1.5rem)",
@@ -93,9 +93,9 @@ export default function Courses() {
             ))}
           </ul>
 
-          <div className="reveal text-center mt-16">
+          <div className="reveal text-center mt-20">
             <a
-              href="https://app.peppy.cool"
+              href="https://app.peppy.cool/quicksell/cm3odpadb7357411js28lc8vy46/book/trial/"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"

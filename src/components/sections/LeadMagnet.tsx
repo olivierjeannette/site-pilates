@@ -42,12 +42,12 @@ export default function LeadMagnet() {
     >
       <div className="container-app">
         <div className="max-w-md mx-auto text-center">
-          <div className="reveal eyebrow justify-center mb-8" style={{ display: "inline-flex" }}>
+          <div className="reveal eyebrow justify-center mb-12" style={{ display: "inline-flex" }}>
             Cadeau gratuit
           </div>
 
           <h2
-            className="reveal h-display text-balance mb-6"
+            className="reveal h-display text-balance mb-8"
             style={{
               fontSize: "clamp(1.875rem, 5vw, 2.5rem)",
               color: "var(--color-ink-900)",
@@ -60,18 +60,18 @@ export default function LeadMagnet() {
           </h2>
 
           <p
-            className="reveal text-pretty mb-12"
+            className="reveal text-pretty mb-16"
             style={{
               fontSize: "clamp(0.9375rem, 2vw, 1rem)",
               color: "var(--color-ink-500)",
-              lineHeight: 1.7,
+              lineHeight: 1.8,
             }}
           >
             Recevez gratuitement votre ebook pour mincir et rester en forme.
           </p>
 
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="reveal flex flex-col gap-4">
+            <form onSubmit={handleSubmit} className="reveal flex flex-col gap-5">
               <input
                 type="text"
                 value={name}
@@ -112,7 +112,7 @@ export default function LeadMagnet() {
               >
                 {loading ? "Envoi..." : "Recevoir mon ebook"}
               </button>
-              <p className="text-xs mt-3" style={{ color: "var(--color-ink-400)" }}>
+              <p className="text-xs mt-5" style={{ color: "var(--color-ink-400)" }}>
                 Pas de spam · Désabonnement en 1 clic
               </p>
             </form>
